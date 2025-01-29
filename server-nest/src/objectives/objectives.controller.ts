@@ -1,6 +1,5 @@
 import {Body, Controller, Get, Post} from '@nestjs/common';
 import {ObjectivesService} from "./objectives.service";
-import {response} from "express";
 import {CreateObjectiveDto} from "../DTOs/CreateObjective-dto";
 
 @Controller('objectives')
