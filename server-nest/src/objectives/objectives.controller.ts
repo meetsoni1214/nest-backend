@@ -6,13 +6,15 @@ import {CreateObjectiveDto} from "../DTOs/CreateObjective-dto";
 export class ObjectivesController {
     constructor(private objectivesService: ObjectivesService) {
     }
+
     @Get("/")
-    getAll()  {
+    getAll() {
         return this.objectivesService.getAll();
     }
 
     @Post('/')
-    insertOne(@Body() dto:CreateObjectiveDto){
+    insertOne(@Body() dto: CreateObjectiveDto) {
         return this.objectivesService.insertOne(dto);
     }
+
 }
