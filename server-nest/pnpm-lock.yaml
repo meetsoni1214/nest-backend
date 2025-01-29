@@ -17,6 +17,9 @@ importers:
       '@nestjs/platform-express':
         specifier: ^11.0.1
         version: 11.0.6(@nestjs/common@11.0.6(reflect-metadata@0.2.2)(rxjs@7.8.1))(@nestjs/core@11.0.6)
+      '@prisma/client':
+        specifier: 6.2.1
+        version: 6.2.1(prisma@6.2.1)
       '@types/pg':
         specifier: ^8.11.11
         version: 8.11.11
@@ -749,6 +752,15 @@ packages:
   '@pkgr/core@0.1.1':
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@prisma/client@6.2.1':
+    resolution: {integrity: sha512-msKY2iRLISN8t5X0Tj7hU0UWet1u0KuxSPHWuf3IRkB4J95mCvGpyQBfQ6ufcmvKNOMQSq90O2iUmJEN2e5fiA==}
+    engines: {node: '>=18.18'}
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
 
   '@prisma/debug@6.2.1':
     resolution: {integrity: sha512-0KItvt39CmQxWkEw6oW+RQMD6RZ43SJWgEUnzxN8VC9ixMysa7MzZCZf22LCK5DSooiLNf8vM3LHZm/I/Ni7bQ==}
@@ -4252,6 +4264,10 @@ snapshots:
       consola: 3.4.0
 
   '@pkgr/core@0.1.1': {}
+
+  '@prisma/client@6.2.1(prisma@6.2.1)':
+    optionalDependencies:
+      prisma: 6.2.1
 
   '@prisma/debug@6.2.1': {}
 

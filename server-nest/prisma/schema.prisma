@@ -13,4 +13,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Objective {
+  id Int @default(autoincrement()) @id
+  title String
+  key_results KeyResult[]
+}
+
+model KeyResult {
+  id Int @default(autoincrement()) @id
+  title String
+  initial_value Int
+  current_value Int
+  target_value Int
+  metric String
+  objective Objective @relation(fields: [objective_id], references: [id])
+  objective_id Int
+}
+
 
