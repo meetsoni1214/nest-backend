@@ -20,10 +20,16 @@ export class ObjectivesService {
         return this.prismaService.objective.create({data: dto});
     }
 
-    deleteOne(where: Prisma.ObjectiveWhereUniqueInput) {
+    deleteOne(id: Prisma.ObjectiveWhereUniqueInput) {
         return this.prismaService.objective.delete({
-            where: where
+            where: id
         })
     }
 
+    updateTitle(id: Prisma.ObjectiveWhereUniqueInput, dto: CreateObjectiveDto) {
+        return this.prismaService.objective.update({
+            data: dto,
+            where: id
+        })
+    }
 }

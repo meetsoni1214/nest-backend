@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
 import {ObjectivesService} from "./objectives.service";
 import {CreateObjectiveDto} from "../DTOs/CreateObjective-dto";
 
@@ -15,6 +15,16 @@ export class ObjectivesController {
     @Post('/')
     insertOne(@Body() dto: CreateObjectiveDto) {
         return this.objectivesService.insertOne(dto);
+    }
+
+    @Delete("/:id")
+    deleteOne(@Param('id') id: string) {
+        return this.objectivesService.deleteOne({id: Number(id)});
+    }
+
+    @Put('/:id')
+    updateTitle(@Param("id") id: string, @Body() dto: CreateObjectiveDto) {
+        return this.objectivesService.updateTitle({id: Number(id)}, dto);
     }
 
 }
