@@ -4,6 +4,6 @@ import { HelloworldService } from './helloworld.service';
 
 @Module({
   controllers: [HelloworldController],
-  providers: [HelloworldService]
+  providers: [HelloworldService],
 })
 export class HelloworldModule {}

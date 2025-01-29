@@ -12,7 +12,10 @@ describe('HelloworldService', () => {
     service = module.get<HelloworldService>(HelloworldService);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  describe('show()', () => {
+    it('should return hello world', () => {
+      const response = service.show();
+      expect(response).toBe('hello world');
+    });
   });
 });
