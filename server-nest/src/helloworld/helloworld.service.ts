@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 
 @Injectable()
 export class HelloworldService {
-  show() {
-    return 'hello world';
-  }
+    show() {
+        return JSON.stringify({'h': 'hello world'});
+    }
 }
