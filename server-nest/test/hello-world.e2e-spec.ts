@@ -14,10 +14,10 @@ describe('hello-world(Integration)', () => {
     })
     afterAll(async () => {
         await app.close();
+
     })
     it('@Get should return Hello World!', async () => {
         const response = await request(app.getHttpServer()).get('/helloworld');
-        console.log(JSON.parse(response.text));
         expect(JSON.parse(response.text).h).toBe("hello world");
     });
 });
