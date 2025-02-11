@@ -1,0 +1,29 @@
+services:
+  database:
+    container_name: okr-database
+    image: ankane/pgvector
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=okr-db
+    networks:
+      - okr_network
+  backend:
+    build:
+      context: .
+    container_name: nest_backend
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@database:5432/okr-db?schema=public
+    ports:
+      - "3001:3001"
+    networks:
+      - okr_network
+    working_dir: ./app
+    command: >
+      sh -c "pnpm start:dev"
+
+networks:
+  okr_network:
+

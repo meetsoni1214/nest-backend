@@ -1,0 +1,8 @@
+services:
+  backend:
+    image: 475075013331.dkr.ecr.eu-north-1.amazonaws.com/okr/okrserver:latest
+    container_name: nest_backend
+    environment:
+      DATABASE_URL: postgresql://postgres:Password=1214@okr-db-instance.ctkqkmq4kbwi.eu-north-1.rds.amazonaws.com:5432/okr-db?schema=public
+    ports:
+      - "3001:3001"
