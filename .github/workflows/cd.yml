@@ -14,11 +14,7 @@ jobs:
 
     steps:
       - name: Move to backend working directory
-        run: |
-          cd ..
-          cd ..
-          cd nest-backend
-          cd server-nest
+        run: cd /home/ubuntu/nest-backend/server-nest
       - name: Authenticate aws cli
         run: aws ecr get-login-password --region eu-north-1 | podman login --username AWS --password-stdin 475075013331.dkr.ecr.eu-north-1.amazonaws.com
       - name: Pull the image
