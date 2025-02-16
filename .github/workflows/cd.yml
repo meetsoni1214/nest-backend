@@ -13,8 +13,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Move to backend working directory
-        run: cd /home/ubuntu/nest-backend/server-nest
+      - uses: actions/checkout@v4
       #      - name: Authenticate aws cli
       #        run: aws ecr get-login-password --region eu-north-1 | podman login --username AWS --password-stdin 475075013331.dkr.ecr.eu-north-1.amazonaws.com
       #      - name: Pull the image
@@ -23,5 +22,7 @@ jobs:
       #        run: podman rm -f okr/okrserver || true
       - name: check current working directory
         run: pwd
+        working-directory: ${{ github.workspace }}/server-nest
       - name: run the container
         run: podman compose up
+        working-directory: ${{ github.workspace }}/server-nest
