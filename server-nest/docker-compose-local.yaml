@@ -22,7 +22,7 @@ services:
       - okr_network
     working_dir: ./app
     command: >
-      sh -c "pnpm start:dev"
+      sh -c "pnpm start"
 
 networks:
   okr_network:

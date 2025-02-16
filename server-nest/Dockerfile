@@ -12,7 +12,7 @@ COPY . .
 
 EXPOSE 3001
 
-CMD ["pnpm","start:dev"]
+CMD ["pnpm","start"]
 
 
 
