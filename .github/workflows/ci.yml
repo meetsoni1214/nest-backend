@@ -24,7 +24,9 @@ jobs:
           echo "[default]" > ~/.aws/config
           echo "region=us-east-1" >> ~/.aws/config
         working-directory: ${{ github.workspace }}/server-nest
-
+      - name: AWS Login
+        run: aws ecr get-login-password --region eu-north-1 | podman login --username AWS --password-stdin 475075013331.dkr.ecr.eu-north-1.amazonaws.com
+        working-directory: ${{ github.workspace }}/server-nest
       - name: Build the docker image
         run: podman build -t okr/okrserver .
         working-directory: ${{ github.workspace }}/server-nest
