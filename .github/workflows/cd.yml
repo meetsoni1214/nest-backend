@@ -1,0 +1,27 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: [ "CI Pipeline" ]
+    types:
+      - completed
+
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+      - name: Authenticate aws cli
+        run: aws ecr get-login-password --region eu-north-1 | podman login --username AWS --password-stdin 475075013331.dkr.ecr.eu-north-1.amazonaws.com
+        working-directory: nest-backend/server-nest
+      - name: Pull the image
+        run: podman pull 475075013331.dkr.ecr.eu-north-1.amazonaws.com/okr/okrserver:latest
+        working-directory: nest-backend/server-nest
+      - name: Delete old container
+        run: podman rm -f okr/okrserver || true
+        working-directory: nest-backend/server-nest
+      - name: run the container
+        run: podman compose up
+        working-directory: nest-backend/server-nest
