@@ -15,11 +15,11 @@ jobs:
     steps:
       - name: Move to backend working directory
         run: cd /home/ubuntu/nest-backend/server-nest
-      - name: Authenticate aws cli
-        run: aws ecr get-login-password --region eu-north-1 | podman login --username AWS --password-stdin 475075013331.dkr.ecr.eu-north-1.amazonaws.com
-      - name: Pull the image
-        run: podman pull 475075013331.dkr.ecr.eu-north-1.amazonaws.com/okr/okrserver:latest
-      - name: Delete old container
-        run: podman rm -f okr/okrserver || true
+      #      - name: Authenticate aws cli
+      #        run: aws ecr get-login-password --region eu-north-1 | podman login --username AWS --password-stdin 475075013331.dkr.ecr.eu-north-1.amazonaws.com
+      #      - name: Pull the image
+      #        run: podman pull 475075013331.dkr.ecr.eu-north-1.amazonaws.com/okr/okrserver:latest
+      #      - name: Delete old container
+      #        run: podman rm -f okr/okrserver || true
       - name: run the container
         run: podman compose up
