@@ -1,0 +1,30 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Login ECR
+      run: aws ecr get-login-password --region eu-north-1 | podman login --username AWS --password-stdin 475075013331.dkr.ecr.eu-north-1.amazonaws.com
+      working-directory: ${{ github.workspace }}/server-nest
+      
+    - name: Build the docker image
+      run: podman build -t okr/okrserver .
+      working-directory: ${{ github.workspace }}/server-nest
+    - name: tag the image
+      run: podman tag okr/okrserver:latest 475075013331.dkr.ecr.eu-north-1.amazonaws.com/okr/okrserver:latest
+      working-directory: ${{ github.workspace }}/server-nest
+    - name: push the image
+      run: podman push 475075013331.dkr.ecr.eu-north-1.amazonaws.com/okr/okrserver:latest
+      working-directory: ${{ github.workspace }}/server-nest
+      
+
+      
