@@ -21,5 +21,7 @@ jobs:
       #        run: podman pull 475075013331.dkr.ecr.eu-north-1.amazonaws.com/okr/okrserver:latest
       #      - name: Delete old container
       #        run: podman rm -f okr/okrserver || true
+      - name: check current working directory
+        run: pwd
       - name: run the container
         run: podman compose up
